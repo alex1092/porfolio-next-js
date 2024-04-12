@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Pattaya, Racing_Sans_One, Miriam_Libre } from "next/font/google";
+import "@/styles/globals.css";
+import { cn } from "@/lib/utils";
+import { NavBar } from "@/components/NavBar";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+export const pattaya = Pattaya({ weight: "400", subsets: ["latin"] });
+
+export const racingSansOne = Racing_Sans_One({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+export const miriamLibre = Miriam_Libre({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +28,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(miriamLibre.className)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

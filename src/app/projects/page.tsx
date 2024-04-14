@@ -11,7 +11,7 @@ export default function Projects() {
         <NavBar />
       </div>
 
-      <div className="mt-32 justify-center flex gap-4 row flex-wrap flex-row">
+      <div className="mt-32 justify-center flex gap-8 md:gap-4 row flex-wrap flex-row">
         {portfolio.projects.map((project) => (
           <PortfolioCard
             key={project.title}
